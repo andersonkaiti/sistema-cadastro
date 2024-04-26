@@ -1,0 +1,30 @@
+.mainContainer {
+    min-height: 80vh;
+    margin: 1em auto;
+    padding: 1em;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.mainContainer h1 {
+    margin: 1em;
+    text-align: center;
+}
+
+.user {
+    margin: 1em;
+    padding: 1em;
+    gap: 1em;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    border: 1px solid #000;
+}
+
+.error {
+    color: #f00;
+    font-size: 2em;
+    font-weight: bold;
+}

@@ -1,0 +1,29 @@
+.inputBox {
+    width: 100%;
+    margin: 1em 0;
+    padding: .2em 0;
+    position: relative;
+}
+
+.inputUser {
+    width: 100%;
+    background: transparent;
+    outline: none;
+    border: none;
+    border-bottom: 1px solid #000;
+    color: #000;
+}
+
+.inputLabel {
+    position: absolute;
+    top: 0;
+    left: 0;
+    transition: .2s;
+}
+
+.inputUser:focus ~ .inputLabel,
+.inputUser:valid ~ .inputLabel {
+    top: -15px;
+    font-size: .8em;
+    color: #707070;
+}
