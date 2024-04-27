@@ -21,9 +21,9 @@ export default async function Table() {
                     </tr>
                 </thead>
                 <tbody>
-                    {data.map((data: UserData, index: number) => {
+                    {data.map((data: UserData) => {
                         return (
-                            <tr key={index}>
+                            <tr key={data.id}>
                                 <td>{data.id}</td>
                                 <td>{data.name}</td>
                                 <td>{data.email}</td>

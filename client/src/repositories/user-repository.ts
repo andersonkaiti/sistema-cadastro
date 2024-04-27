@@ -21,8 +21,6 @@ export const register = async(form: FormType): Promise<SubmitPromise> => {
 }
 
 export const getData = async(): Promise<UserData[]> => {
-    await new Promise(resolve => setTimeout(resolve, 1000));
-
     const result = await fetch(baseUrl + "/users", {
         method: "GET",
         cache: "no-store",

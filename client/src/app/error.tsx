@@ -13,5 +13,5 @@ export default function Error({ error }: ErrorType) {
                 {error.message.toUpperCase()}
             </p>
         </div>
-    )
+    );
 }
