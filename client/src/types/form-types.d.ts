@@ -25,7 +25,7 @@ export type SubmitPromise = {
 
 export type UserAuthentication = {
     status: boolean;
-    email: string;
+    email?: string;
 }
 
 export type Route = {
