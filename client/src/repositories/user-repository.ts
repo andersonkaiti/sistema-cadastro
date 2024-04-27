@@ -1,7 +1,6 @@
 import {
     type SubmitPromise,
     type UserAuthentication,
-    type UserOneData,
     type FormType,
     type UserData
 } from "@/types/form-types";
@@ -30,19 +29,6 @@ export const getData = async(): Promise<UserData[]> => {
         headers: {
             "Content-Type": "application/json"
         }
-    });
-
-    return result.json();
-}
-
-export const getOne = async(id: string): Promise<UserOneData> => {
-    const result = await fetch(baseUrl + "/users/get-one", {
-        cache: "no-store",
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify({ id })
     });
 
     return result.json();

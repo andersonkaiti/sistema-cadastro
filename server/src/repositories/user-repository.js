@@ -17,36 +17,6 @@ exports.get = async() => {
     return await query(sqlGetAll);
 }
 
-exports.getOne = async(id) => {
-    const sqlGetOne = `
-        SELECT
-            name, email, password
-        FROM
-            usuario
-        WHERE
-            id = ?
-    `;
-    return (await query(sqlGetOne, [id]))[0];
-}
-
-exports.update = async(name, email, password, id) => {
-    try {
-        const sqlUpdate = `
-            UPDATE
-                usuario
-            SET
-                name = ?,
-                email = ?,
-                password = ?
-            WHERE
-                id = ?
-        `;
-        await query(sqlUpdate, [name, email, password, id]);
-    } catch(error) {
-        throw new Error(error.message);
-    }
-}
-
 exports.register = async(name, email, password) => {
     try {
         const sqlCheckEmail = `
