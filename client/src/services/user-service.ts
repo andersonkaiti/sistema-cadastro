@@ -4,7 +4,7 @@ import {
     register, getData, login, authenticate,
 } from "@/repositories/user-repository";
 import {
-    type SubmitPromise, type UserOneData, type UserAuthentication
+    type SubmitPromise, type UserAuthentication
 } from "@/types/form-types";
 import { type UserData, type FormType } from "@/types/form-types";
 
