@@ -1,7 +1,7 @@
 import { Email } from "@/validators/email";
 import { Password } from "@/validators/password";
 import {
-    register, getData, getOne, login, authenticate,
+    register, getData, login, authenticate,
 } from "@/repositories/user-repository";
 import {
     type SubmitPromise, type UserOneData, type UserAuthentication
@@ -35,10 +35,6 @@ export class UserService {
 
     static async getData(): Promise<UserData[]> {
         return await getData();
-    }
-
-    static async getOne(id: string): Promise<UserOneData> {
-        return await getOne(id);
     }
 
     static async login(form: FormType) {

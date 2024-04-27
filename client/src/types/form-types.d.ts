@@ -23,12 +23,6 @@ export type SubmitPromise = {
     message: string
 }
 
-export type UserOneData = {
-    name: string;
-    email: string;
-    password: string;
-}
-
 export type UserAuthentication = {
     status: boolean;
     email: string;
