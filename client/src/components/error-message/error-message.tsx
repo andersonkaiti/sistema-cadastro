@@ -1,13 +1,13 @@
 type ErrorMessageProps = {
-    errorMessage: string;
+    children: string;
 }
 
-export default function ErrorMessage({ errorMessage }: ErrorMessageProps) {
+export default function ErrorMessage({ children }: ErrorMessageProps) {
     return (
         <>
-            {errorMessage.length > 0 && (
+            {children.length > 0 && (
                 <p>
-                    {errorMessage}
+                    {children}
                 </p>
             )}
         </>

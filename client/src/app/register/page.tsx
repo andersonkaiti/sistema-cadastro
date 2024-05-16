@@ -2,28 +2,29 @@
 
 import { useRef, useState } from "react";
 import { useRouter } from "next/navigation";
+import { FormEvent } from "react";
 import Link from "next/link";
 import styles from "./register.module.css";
 import Input from "@/components/input/input";
 import Button from "@/components/button/button";
 import { UserService } from "@/services/user-service";
-import { type InputType } from "@/types/form-types";
+import { InputType } from "@/types/form-types";
 import ErrorMessage from "@/components/error-message/error-message";
 
 export default function Register() {
     const route = useRouter();
     const [errorMessage, setErrorMessage] = useState<string>("");
-    const nameRef = useRef<HTMLInputElement>(null);
-    const emailRef = useRef<HTMLInputElement>(null);
-    const passwordRef = useRef<HTMLInputElement>(null);
+    const nameRef = useRef<HTMLInputElement>(null!);
+    const emailRef = useRef<HTMLInputElement>(null!);
+    const passwordRef = useRef<HTMLInputElement>(null!);
 
-    const handleSubmit = async(event: React.FormEvent<HTMLFormElement>) => {
+    const handleSubmit = async(event: FormEvent) => {
         event.preventDefault();
 
         const result = await UserService.register({
-            name: nameRef.current?.value,
-            email: emailRef.current?.value,
-            password: passwordRef.current?.value
+            name: nameRef.current.value,
+            email: emailRef.current.value,
+            password: passwordRef.current.value
         });
 
         if(result.status) {
@@ -35,9 +36,9 @@ export default function Register() {
     }
 
     const inputs: InputType[] = [
-        { identifier: "name", inputName: "Nome", type: "text", reference: nameRef },
-        { identifier: "email", inputName: "Email", type: "text", reference: emailRef },
-        { identifier: "password", inputName: "Senha", type: "password", reference: passwordRef }
+        { id: "name", name: "Nome", type: "text", ref: nameRef },
+        { id: "email", name: "Email", type: "text", ref: emailRef },
+        { id: "password", name: "Senha", type: "password", ref: passwordRef }
     ];
 
     return (
@@ -46,23 +47,23 @@ export default function Register() {
             className={styles.formContainer}
         >
             <h1 className={styles.title}>Para se cadastrar, informe os dados abaixo</h1>
-            {inputs.map((value: InputType, index: number) => {
-                return (
-                    <Input
-                        key={index}
-                        identifier={value.identifier}
-                        inputName={value.inputName}
-                        type={value.type}
-                        reference={value.reference}
-                    />
-                )
-            })}
+            {
+                inputs.map((value: InputType, index: number) => {
+                    return (
+                        <Input
+                            key={index}
+                            id={value.id}
+                            name={value.name}
+                            type={value.type}
+                            reference={value.ref}
+                        />
+                    );
+                })
+            }
             <Button
-                value="Registrar"
+                value={"Registrar"}
             />
-            <ErrorMessage
-                errorMessage={errorMessage}
-            />
+            <ErrorMessage>{errorMessage}</ErrorMessage>
             <p>Já possui uma conta? <Link className={styles.link} href={"/login"}>Faça o login aqui</Link></p>
         </form>
     );

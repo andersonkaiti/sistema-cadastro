@@ -3,7 +3,7 @@
 import styles from "./header.module.css";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { type LinkType, navLinks } from "./nav-links";
+import { LinkType, navLinks } from "./nav-links";
 
 export default function Header() {
     const path = usePathname();
@@ -28,5 +28,5 @@ export default function Header() {
                 })}
             </nav>
         </header>
-    )
+    );
 }

@@ -22,7 +22,7 @@ export const register = async(form: FormType): Promise<SubmitPromise> => {
             throw new Error("Erro ao registrar usuário");
         }
     
-        return result.json();
+        return await result.json();
     } catch(error) {
         console.log("Erro ao registrar usuário");
         return {
@@ -46,7 +46,7 @@ export const getData = async(): Promise<UserData[]> => {
             throw new Error("Erro ao obter dados dos usuários");
         }
     
-        return result.json();
+        return await result.json();
     } catch(error) {
         console.log("Erro ao obter dados dos usuários");
         return [];
@@ -67,7 +67,7 @@ export const login = async(form: FormType) => {
             throw new Error("Erro ao realizar o login");
         }
     
-        return result.json();
+        return await result.json();
     } catch(error) {
         console.error("Erro ao realizar o login");
         return {
@@ -92,7 +92,7 @@ export const authenticate = async(): Promise<UserAuthentication> => {
             throw new Error("Erro ao autenticar usuário");
         }
         
-        return result.json();
+        return await result.json() as UserAuthentication;
     } catch(error) {
         console.error("Erro ao autenticar usuário");
         return {
