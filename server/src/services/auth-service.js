@@ -12,8 +12,7 @@ exports.authenticate = async(req, res, next) => {
     if(!token) {
         res.status(401).json({
             status: false,
-            message: "Acesso Restrito",
-            error: error.message
+            message: "Acesso Restrito"
         });
     } else {
         jwt.verify(token, process.env.SALT_KEY, (error, decoded) => {
@@ -24,10 +23,9 @@ exports.authenticate = async(req, res, next) => {
                     error: error.message
                 });
             } else {
-                const { email, ...rest } = decoded;
                 res.json({
                     status: true,
-                    email
+                    email: decoded.email
                 })
             }
         });

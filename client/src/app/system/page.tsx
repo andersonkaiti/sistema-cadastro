@@ -7,16 +7,15 @@ import styles from "./system.module.css";
 import Button from "@/components/button/button";
 import Loader from "@/components/loader/loader";
 import { logout } from "./logout";
-import { Route } from "@/types/form-types";
 
 export default function System() {
-    const route: Route = useRouter();
+    const route = useRouter();
     const [auth, setAuth] = useState<boolean>(false);
     const [isLoading, setIsLoading] = useState<boolean>(true);
 
     useEffect(() => {
         (async() => {
-            const { status } = await UserService.authenticate();
+            const status = await UserService.authenticate();
             setIsLoading(false);
             if(status) {
                 setAuth(true);
@@ -35,9 +34,8 @@ export default function System() {
             <div className={styles.systemContainer}>
                 <p>Autenticado</p>
                 <Button
-                    value="SAIR"
-                    fn={() => logout(route)}
-                />
+                    onClick={() => logout(route)}
+                >SAIR</Button>
             </div>
         );
     }

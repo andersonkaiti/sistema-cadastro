@@ -12,10 +12,10 @@ export type UserData = {
 }
 
 export type InputType = {
-    identifier: string;
-    inputName: string;
+    id: string;
+    name: string;
     type: string;
-    reference: React.RefObject<HTMLInputElement>;
+    ref: React.RefObject<HTMLInputElement>;
 };
 
 export type SubmitPromise = {
@@ -28,7 +28,7 @@ export type UserAuthentication = {
     email?: string;
 }
 
-export type Route = {
-    push: (path: string) => void;
-    refresh: () => void;
+export type AppRouterInstance = {
+    push(href: string): void;
+    refresh(): void;
 }

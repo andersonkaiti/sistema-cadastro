@@ -4,9 +4,8 @@ import {
     register, getData, login, authenticate,
 } from "@/repositories/user-repository";
 import {
-    type SubmitPromise, type UserAuthentication
+    SubmitPromise, UserAuthentication, UserData, FormType
 } from "@/types/form-types";
-import { type UserData, type FormType } from "@/types/form-types";
 
 export class UserService {
     private static validate(form: FormType) {

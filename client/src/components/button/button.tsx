@@ -1,17 +1,13 @@
 import styles from "./button.module.css";
 
-type ButtonProps = {
-    value: string;
-    fn?: () => void;
-}
+type ButtonProps = React.ComponentProps<"input">
 
-export default function Button({ value, fn }: ButtonProps) {
+export default function Button({ ...props }: ButtonProps) {
     return (
         <input
             className={styles.button}
             type="submit"
-            value={value}
-            onClick={fn}
+            {...props}
         />
     );
 }
