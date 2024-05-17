@@ -26,6 +26,7 @@ export type SubmitPromise = {
 export type UserAuthentication = {
     status: boolean;
     email?: string;
+    name?: string;
 }
 
 export type AppRouterInstance = {

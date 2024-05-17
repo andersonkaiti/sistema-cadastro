@@ -70,7 +70,8 @@ exports.login = async(email, password, res) => {
 
         const token = await authService.generateToken({
             email,
-            user: user.id
+            user: user.id,
+            name: user.name
         });
 
         return {

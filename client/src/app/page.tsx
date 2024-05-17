@@ -1,7 +1,10 @@
-import { Suspense } from "react";
+import { Suspense, lazy } from "react";
 import styles from "./home.module.css";
-import Table from "@/components/table/table";
 import Loader from "@/components/loader/loader";
+
+const Table = lazy(() => (
+  import("@/components/table/table")
+));
 
 export default async function Home() {
   return (
