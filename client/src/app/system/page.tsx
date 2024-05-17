@@ -12,13 +12,15 @@ export default function System() {
     const route = useRouter();
     const [auth, setAuth] = useState<boolean>(false);
     const [isLoading, setIsLoading] = useState<boolean>(true);
+    const [name, setName] = useState<string | undefined>("");
 
     useEffect(() => {
         (async() => {
-            const status = await UserService.authenticate();
+            const { status, name } = await UserService.authenticate();
             setIsLoading(false);
             if(status) {
                 setAuth(true);
+                setName(name);
             } else {
                 route.push("/login");
             }
@@ -32,7 +34,7 @@ export default function System() {
     if(auth) {
         return (
             <div className={styles.systemContainer}>
-                <p>Autenticado</p>
+                <p>Bem-vindo, {name}!</p>
                 <Button
                     onClick={() => logout(route)}
                 >SAIR</Button>

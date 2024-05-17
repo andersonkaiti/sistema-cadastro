@@ -23,10 +23,12 @@ exports.authenticate = async(req, res, next) => {
                     error: error.message
                 });
             } else {
+                const { name, email } = decoded;
                 res.json({
                     status: true,
-                    email: decoded.email
-                })
+                    email: email,
+                    name: name
+                });
             }
         });
     }
