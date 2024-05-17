@@ -60,9 +60,7 @@ export default function Register() {
                     );
                 })
             }
-            <Button
-                value={"Registrar"}
-            />
+            <Button>Registrar</Button>
             <ErrorMessage>{errorMessage}</ErrorMessage>
             <p>Já possui uma conta? <Link className={styles.link} href={"/login"}>Faça o login aqui</Link></p>
         </form>
