@@ -57,9 +57,7 @@ export default function Login() {
                     );
                 })
             }
-            <Button
-                value={"LOGAR"}
-            />
+            <Button>LOGAR</Button>
             <ErrorMessage>{errorMessage}</ErrorMessage>
             <p>Não possui uma conta? <Link className={styles.link} href={"/register"}>Cadastre-se aqui</Link></p>
         </form>
