@@ -1,6 +1,4 @@
-type ErrorMessageProps = {
-    children: string;
-}
+import { ErrorMessageProps } from "@/types/form-types";
 
 export default function ErrorMessage({ children }: ErrorMessageProps) {
     return (

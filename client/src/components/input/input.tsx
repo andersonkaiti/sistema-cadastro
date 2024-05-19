@@ -1,10 +1,7 @@
 "use client";
 
 import styles from "./input.module.css";
-
-type InputProps = {
-    reference: React.RefObject<HTMLInputElement>
-} & React.ComponentProps<"input">;
+import { InputProps } from "@/types/form-types";
 
 export default function Input({ id, name, type, reference }: InputProps) {
     return (

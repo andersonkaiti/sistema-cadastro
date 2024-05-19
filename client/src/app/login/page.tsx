@@ -8,7 +8,7 @@ import styles from "./login.module.css";
 import Input from "@/components/input/input";
 import Button from "@/components/button/button";
 import { UserService } from "@/services/user-service";
-import { InputType } from "@/types/form-types";
+import { FormType, InputType } from "@/types/form-types";
 import ErrorMessage from "@/components/error-message/error-message";
 
 export default function Login() {
@@ -23,7 +23,7 @@ export default function Login() {
         const result = await UserService.login({
             email: emailRef.current.value,
             password: passwordRef.current.value
-        });
+        } as FormType);
 
         if(result.status) {
             route.push("/system");

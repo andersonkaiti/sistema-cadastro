@@ -34,7 +34,7 @@ export default function System() {
     if(auth) {
         return (
             <div className={styles.systemContainer}>
-                <p>Bem-vindo, {name}!</p>
+                <p>Boas-vindas, {name}!</p>
                 <Button
                     onClick={() => logout(route)}
                 >SAIR</Button>

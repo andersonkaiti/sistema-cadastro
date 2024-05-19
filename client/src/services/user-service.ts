@@ -38,7 +38,7 @@ export class UserService {
 
     static async login(form: FormType) {
         const result = await login(form);
-        localStorage.setItem("token", result.token);
+        localStorage.setItem("token", result.token!);
         return result;
     }
 

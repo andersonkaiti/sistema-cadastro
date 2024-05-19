@@ -8,7 +8,7 @@ import styles from "./register.module.css";
 import Input from "@/components/input/input";
 import Button from "@/components/button/button";
 import { UserService } from "@/services/user-service";
-import { InputType } from "@/types/form-types";
+import { FormType, InputType } from "@/types/form-types";
 import ErrorMessage from "@/components/error-message/error-message";
 
 export default function Register() {
@@ -25,7 +25,7 @@ export default function Register() {
             name: nameRef.current.value,
             email: emailRef.current.value,
             password: passwordRef.current.value
-        });
+        } as FormType);
 
         if(result.status) {
             route.push("/");
