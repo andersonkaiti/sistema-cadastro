@@ -1,8 +1,5 @@
 import styles from "./button.module.css";
-
-type ButtonProps = {
-    children: string;
-} & React.ComponentProps<"input">;
+import { ButtonProps } from "@/types/form-types";
 
 export default function Button({ children, ...props }: ButtonProps) {
     return (

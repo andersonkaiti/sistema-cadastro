@@ -1,12 +1,23 @@
 import {
-    type SubmitPromise,
-    type UserAuthentication,
-    type FormType,
-    type UserData
+    SubmitPromise,
+    UserAuthentication,
+    FormType,
+    UserData,
+    LoginType
 } from "@/types/form-types";
 
 const baseUrl = `https://ws-trabalho-mantovani.vercel.app`;
 // const baseUrl = `http://localhost:15761`;
+
+const handleFetchError = (error: unknown, defaultMessage: string): string => {
+    if(error instanceof Error) {
+        console.error(error.message);
+        return error.message;
+    } else {
+        console.error(error);
+        return defaultMessage;
+    }
+}
 
 export const register = async(form: FormType): Promise<SubmitPromise> => {
     try {
@@ -22,13 +33,13 @@ export const register = async(form: FormType): Promise<SubmitPromise> => {
             throw new Error("Erro ao registrar usuário");
         }
     
-        return await result.json();
+        return await result.json() as SubmitPromise;
     } catch(error) {
-        console.log("Erro ao registrar usuário");
+        const errorMessage = handleFetchError(error, "Erro ao registrar usuário");
         return {
             status: false,
-            message: "Erro ao registrar usuário"
-        }
+            message: errorMessage
+        } as SubmitPromise;
     }
 }
 
@@ -46,14 +57,14 @@ export const getData = async(): Promise<UserData[]> => {
             throw new Error("Erro ao obter dados dos usuários");
         }
     
-        return await result.json();
+        return await result.json() as UserData[];
     } catch(error) {
-        console.log("Erro ao obter dados dos usuários");
+        handleFetchError(error, "Erro ao obter dados dos usuários");
         return [];
     }
 }
 
-export const login = async(form: FormType) => {
+export const login = async(form: FormType): Promise<LoginType> => {
     try {
         const result = await fetch(baseUrl + "/users/login", {
             method: "POST",
@@ -63,17 +74,19 @@ export const login = async(form: FormType) => {
             body: JSON.stringify(form)
         });
 
+        const data: LoginType = await result.json();
+
         if(!result.ok) {
-            throw new Error("Erro ao realizar o login");
+            throw new Error(data.message);
         }
     
-        return await result.json();
+        return data;
     } catch(error) {
-        console.error("Erro ao realizar o login");
+        const errorMessage = handleFetchError(error, "Erro ao realizar o login");
         return {
             status: false,
-            message: "Erro ao realizar o login"
-        }
+            message: errorMessage
+        } as LoginType;
     }
 }
 
@@ -88,15 +101,17 @@ export const authenticate = async(): Promise<UserAuthentication> => {
             }
         });
 
+        const data: UserAuthentication = await result.json();
+
         if(!result.ok) {
-            throw new Error("Erro ao autenticar usuário");
+            throw new Error(data.message);
         }
         
-        return await result.json() as UserAuthentication;
+        return data;
     } catch(error) {
-        console.error("Erro ao autenticar usuário");
+        handleFetchError(error, "Erro ao autenticar usuário");
         return {
             status: false,
-        }
+        } as UserAuthentication;
     }
 }

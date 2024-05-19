@@ -1,10 +1,7 @@
 "use client";
 
 import styles from "./home.module.css";
-
-type ErrorType = {
-    error: Error
-}
+import { ErrorType } from "@/types/form-types";
 
 export default function Error({ error }: ErrorType) {
     return (
